@@ -2,6 +2,7 @@ from fastapi import FastAPI, Depends, HTTPException, UploadFile, File, Form, Bod
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from sqlalchemy.orm import Session
+from datetime import datetime, timedelta
 
 import os
 import shutil
@@ -48,23 +49,102 @@ def get_db():
 
 
 # ---------- DASHBOARD ----------
+from datetime import datetime, timedelta, date
+from sqlalchemy import func
+
+
 @app.get("/dashboard")
-def dashboard(admin=Depends(verify_token),db: Session = Depends(get_db)):
+def dashboard(admin=Depends(verify_token), db: Session = Depends(get_db)):
 
+    now = datetime.now()
+
+    # -----------------------
+    # Basic Totals
+    # -----------------------
     total_users = db.query(User).count()
-
     total_attendance = db.query(Attendance).count()
 
-    today_attendance = db.query(Attendance)\
-        .filter(Attendance.check_in != None)\
-        .count()
+    # -----------------------
+    # Today Range
+    # -----------------------
+    today_start = datetime.combine(date.today(), datetime.min.time())
+    today_end = today_start + timedelta(days=1)
 
+    today_records = db.query(Attendance).filter(
+        Attendance.check_in >= today_start,
+        Attendance.check_in < today_end
+    )
+
+    today_attendance = today_records.count()
+
+    active_users_today = db.query(
+        func.count(func.distinct(Attendance.user_id))
+    ).filter(
+        Attendance.check_in >= today_start,
+        Attendance.check_in < today_end
+    ).scalar()
+
+    attendance_rate = (
+        round((active_users_today / total_users) * 100, 2)
+        if total_users > 0 else 0
+    )
+
+    # -----------------------
+    # Weekly Attendance
+    # -----------------------
+    week_start = today_start - timedelta(days=7)
+
+    weekly_attendance = db.query(Attendance).filter(
+        Attendance.check_in >= week_start
+    ).count()
+
+    # -----------------------
+    # Monthly Attendance
+    # -----------------------
+    month_start = today_start.replace(day=1)
+
+    monthly_attendance = db.query(Attendance).filter(
+        Attendance.check_in >= month_start
+    ).count()
+
+    # -----------------------
+    # Last 7 Days Trend
+    # -----------------------
+    trend_data = []
+
+    for i in range(7):
+        day = today_start - timedelta(days=i)
+        next_day = day + timedelta(days=1)
+
+        count = db.query(Attendance).filter(
+            Attendance.check_in >= day,
+            Attendance.check_in < next_day
+        ).count()
+
+        trend_data.append({
+            "date": day.strftime("%Y-%m-%d"),
+            "attendance": count
+        })
+
+    trend_data.reverse()
+
+    # -----------------------
+    # Return Structured Dashboard
+    # -----------------------
     return {
-        "total_users": total_users,
-        "total_attendance": total_attendance,
-        "today_attendance": today_attendance
+        "summary": {
+            "total_users": total_users,
+            "total_attendance": total_attendance,
+            "today_attendance": today_attendance,
+            "active_users_today": active_users_today,
+            "attendance_rate_today": attendance_rate
+        },
+        "time_metrics": {
+            "weekly_attendance": weekly_attendance,
+            "monthly_attendance": monthly_attendance
+        },
+        "trend": trend_data
     }
-
 
 # ---------- GET USERS ----------
 @app.get("/users")
