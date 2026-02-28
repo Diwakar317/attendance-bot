@@ -28,8 +28,8 @@ def _make_handler(filename: str, level: int = logging.DEBUG) -> RotatingFileHand
     path = os.path.join(LOG_DIR, filename)
     handler = RotatingFileHandler(
         path,
-        maxBytes=5 * 1024 * 1024,   # 5 MB
-        backupCount=5,
+        maxBytes=3 * 1024 * 1024,   # 5 MB
+        backupCount=3,
         encoding="utf-8",
     )
     handler.setLevel(level)

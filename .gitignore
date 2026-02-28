@@ -11,3 +11,4 @@ wheels/
 .env
 
 bot/registered_faces/
+log/

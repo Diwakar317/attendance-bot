@@ -190,3 +190,5 @@ requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected(
 2026-02-28T13:55:52Z | INFO     | attendance.main | Cleaned 0 old used-photo records.
 2026-02-28T13:55:52Z | INFO     | attendance.main | Bot starting…
 2026-02-28T13:56:22Z | INFO     | attendance.api | action=user_created | admin=admin | phone=8810830160 | faces=1
+2026-02-28T14:10:32Z | INFO     | attendance.api | action=user_deleted | admin=admin | user_id=3 | phone=8840717494
+2026-02-28T14:10:34Z | INFO     | attendance.api | action=user_deleted | admin=admin | user_id=4 | phone=8810830160
