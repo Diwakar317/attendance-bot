@@ -1,4 +1,10 @@
-ADMIN_USERNAME = "admin"
-ADMIN_PASSWORD = "admin123"
-SECRET_KEY = "9f4a7c3b5e8f2c6d1a9b0e3f7c8d2a1f4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e"
+import os
+from bot.config import ALLOW_MULTIPLE_SESSIONS
+
+ADMIN_USERNAME = os.getenv("ADMIN_USERNAME")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
+SECRET_KEY = os.getenv("SECRET_KEY")
+if not SECRET_KEY:
+    raise RuntimeError("SECRET_KEY not set")
 ALGORITHM = "HS256"
+TOKEN_EXPIRE_HOURS = int(os.getenv("TOKEN_EXPIRE_HOURS", 12))

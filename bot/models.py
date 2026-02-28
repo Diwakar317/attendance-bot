@@ -1,4 +1,7 @@
-from sqlalchemy import Column, Integer, String, DateTime, Float, ForeignKey
+from sqlalchemy import (
+    Column, Integer, String, DateTime, Date, Float,
+    ForeignKey, UniqueConstraint, Index
+)
 from bot.database import Base
 from datetime import datetime, timezone
 
@@ -16,9 +19,17 @@ class UsedPhoto(Base):
         index=True
     )
 
+    user_id = Column(
+        Integer,
+        ForeignKey("users.id", ondelete="SET NULL"),
+        nullable=True,
+        index=True
+    )
+
     used_at = Column(
         DateTime(timezone=True),
-        default=lambda: datetime.now(timezone.utc)
+        default=lambda: datetime.now(timezone.utc),
+        nullable=False
     )
 
 
@@ -50,21 +61,29 @@ class Attendance(Base):
 
     __tablename__ = "attendance"
 
+    __table_args__ = (
+        UniqueConstraint("user_id", "date", name="uq_user_date"),
+        Index("ix_attendance_date", "date"),
+        Index("ix_attendance_checkin", "check_in"),
+    )
+
     id = Column(Integer, primary_key=True)
 
     user_id = Column(
         Integer,
-        ForeignKey("users.id"),
+        ForeignKey("users.id", ondelete="CASCADE"),
         nullable=False,
         index=True
     )
 
     check_in = Column(
-        DateTime(timezone=True)
+        DateTime(timezone=True),
+        nullable=False
     )
 
     check_out = Column(
-        DateTime(timezone=True)
+        DateTime(timezone=True),
+        nullable=True
     )
 
     lat = Column(Float)
@@ -72,7 +91,7 @@ class Attendance(Base):
     lon = Column(Float)
 
     date = Column(
-        DateTime(timezone=True),
-        default=lambda: datetime.now(timezone.utc),
-        index=True
+        Date,
+        default=lambda: datetime.now(timezone.utc).date(),
+        nullable=False
     )

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import API from "../api";
 
 import {
@@ -9,14 +9,21 @@ import {
   TableRow,
   Button,
   Avatar,
-  Box
+  Box,
+  Tooltip,
+  IconButton
 } from "@mui/material";
+
+import EditIcon from "@mui/icons-material/Edit";
+import AddIcon from "@mui/icons-material/Add";
+import CloseIcon from "@mui/icons-material/Close";
 
 
 export default function Users() {
 
   const [users, setUsers] = useState([]);
   const [faces, setFaces] = useState({});
+  const faceInputRefs = useRef({});
 
 
   useEffect(() => {
@@ -43,9 +50,8 @@ export default function Users() {
         const faceList = res.data.faces || [];
 
         const urls = faceList.map(
-  path => `http://127.0.0.1:8000${path}`
-);
-
+          path => `http://127.0.0.1:8000${path}`
+        );
 
         setFaces(prev => ({
           ...prev,
@@ -65,6 +71,62 @@ export default function Users() {
   }
 
 
+  function handleFaceReplace(userId, faceIndex, e) {
+
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("face", file);
+
+    API.put(`/users/${userId}/face/${faceIndex}`, formData)
+      .then(() => {
+        loadFaces(userId);
+      })
+      .catch(err =>
+        alert(err.response?.data?.detail || "Failed to update face")
+      );
+
+    e.target.value = "";
+  }
+
+
+  function handleDeleteFace(userId, faceIndex) {
+
+    if (!confirm(`Delete face ${faceIndex}?`)) return;
+
+    API.delete(`/users/${userId}/face/${faceIndex}`)
+      .then(() => {
+        loadFaces(userId);
+        loadUsers();
+      })
+      .catch(err =>
+        alert(err.response?.data?.detail || "Failed to delete face")
+      );
+  }
+
+
+  function handleAddFace(userId, e) {
+
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("face", file);
+
+    API.post(`/users/${userId}/face`, formData)
+      .then(() => {
+        loadFaces(userId);
+        loadUsers();
+      })
+      .catch(err =>
+        alert(err.response?.data?.detail || "Failed to add face")
+      );
+
+    e.target.value = "";
+  }
+
+
   function deleteUser(id) {
 
     if (!confirm("Delete this user?")) return;
@@ -77,45 +139,6 @@ export default function Users() {
   }
 
 
-  function uploadFaces(userId, files) {
-
-    if (files.length === 0) return;
-
-    const formData = new FormData();
-
-    Array.from(files).forEach(file =>
-      formData.append("faces", file)
-    );
-
-    API.post(`/users/${userId}/face`, formData)
-      .then(() => {
-
-        alert("Faces updated");
-
-        loadUsers();
-
-      })
-      .catch(err =>
-        alert(err.response?.data?.detail)
-      );
-
-  }
-
-
-  function handleFileChange(userId, e) {
-
-    const files = e.target.files;
-
-    if (!files) return;
-
-    if (files.length > 3) {
-      alert("Maximum 3 faces allowed");
-      return;
-    }
-
-    uploadFaces(userId, files);
-
-  }
 
 
   return (
@@ -129,7 +152,6 @@ export default function Users() {
           <TableCell>Faces</TableCell>
           <TableCell>Name</TableCell>
           <TableCell>Phone</TableCell>
-          <TableCell>Update Faces</TableCell>
           <TableCell>Delete User</TableCell>
 
         </TableRow>
@@ -143,20 +165,121 @@ export default function Users() {
 
           <TableRow key={u.id}>
 
-            {/* Faces preview */}
+            {/* Faces preview — click to replace */}
             <TableCell>
 
               <Box sx={{ display: "flex", gap: 1 }}>
 
-                {(faces[u.id] || []).map((src, i) => (
+                {(faces[u.id] || []).map((src, i) => {
 
-                  <Avatar
-                    key={i}
-                    src={src}
-                    sx={{ width: 50, height: 50 }}
-                  />
+                  const faceIndex = i + 1;
+                  const refKey = `${u.id}_${faceIndex}`;
 
-                ))}
+                  return (
+                    <Tooltip
+                      key={i}
+                      title={`Click to replace face ${faceIndex}`}
+                      arrow
+                    >
+                      <Box sx={{ position: "relative", cursor: "pointer" }}>
+
+                        <IconButton
+                          size="small"
+                          sx={{
+                            position: "absolute",
+                            top: -8,
+                            right: -8,
+                            bgcolor: "error.main",
+                            color: "white",
+                            width: 18,
+                            height: 18,
+                            zIndex: 1,
+                            "&:hover": { bgcolor: "error.dark" }
+                          }}
+                          onClick={() =>
+                            handleDeleteFace(u.id, faceIndex)
+                          }
+                        >
+                          <CloseIcon sx={{ fontSize: 12 }} />
+                        </IconButton>
+
+                        <Avatar
+                          src={`${src}?t=${Date.now()}`}
+                          sx={{ width: 50, height: 50 }}
+                          onClick={() =>
+                            faceInputRefs.current[refKey]?.click()
+                          }
+                        />
+
+                        <IconButton
+                          size="small"
+                          sx={{
+                            position: "absolute",
+                            bottom: -4,
+                            right: -4,
+                            bgcolor: "white",
+                            boxShadow: 1,
+                            width: 20,
+                            height: 20
+                          }}
+                          onClick={() =>
+                            faceInputRefs.current[refKey]?.click()
+                          }
+                        >
+                          <EditIcon sx={{ fontSize: 12 }} />
+                        </IconButton>
+
+                        <input
+                          hidden
+                          type="file"
+                          accept="image/*"
+                          ref={el =>
+                            (faceInputRefs.current[refKey] = el)
+                          }
+                          onChange={e =>
+                            handleFaceReplace(u.id, faceIndex, e)
+                          }
+                        />
+
+                      </Box>
+                    </Tooltip>
+                  );
+
+                })}
+
+                {/* Add face placeholder when < 3 faces */}
+                {(faces[u.id] || []).length < 3 && (
+                  <Tooltip title="Add new face" arrow>
+                    <Box sx={{ position: "relative", cursor: "pointer" }}>
+
+                      <Avatar
+                        sx={{
+                          width: 50,
+                          height: 50,
+                          bgcolor: "grey.200",
+                          border: "2px dashed",
+                          borderColor: "grey.400"
+                        }}
+                        onClick={() =>
+                          faceInputRefs.current[`${u.id}_add`]?.click()
+                        }
+                      >
+                        <AddIcon sx={{ color: "grey.600" }} />
+                      </Avatar>
+
+                      <input
+                        hidden
+                        type="file"
+                        accept="image/*"
+                        ref={el =>
+                          (faceInputRefs.current[`${u.id}_add`] = el)
+                        }
+                        onChange={e => handleAddFace(u.id, e)}
+                      />
+
+                    </Box>
+                  </Tooltip>
+                )}
 
               </Box>
 
@@ -172,30 +295,6 @@ export default function Users() {
             {/* Phone */}
             <TableCell>
               {u.phone}
-            </TableCell>
-
-
-            {/* Upload faces */}
-            <TableCell>
-
-              <Button
-                variant="contained"
-                component="label"
-              >
-                Upload
-
-                <input
-                  hidden
-                  type="file"
-                  accept="image/*"
-                  multiple
-                  onChange={(e) =>
-                    handleFileChange(u.id, e)
-                  }
-                />
-
-              </Button>
-
             </TableCell>
 
 

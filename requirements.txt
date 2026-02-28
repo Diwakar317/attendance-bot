@@ -1,6 +1,7 @@
 python-dotenv==1.0.1
 pyTelegramBotAPI
 SQLAlchemy
+psycopg2-binary
 deepface
 opencv-python
 numpy

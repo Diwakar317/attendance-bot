@@ -1,0 +1,192 @@
+2026-02-28T06:49:22Z | INFO     | attendance.main | Database tables created / verified.
+2026-02-28T06:49:22Z | INFO     | attendance.main | Cleaned 0 old used-photo records.
+2026-02-28T06:49:22Z | INFO     | attendance.main | Bot starting…
+2026-02-28T07:14:13Z | INFO     | attendance.face | Loading face recognition model (SFace)…
+2026-02-28T07:14:13Z | INFO     | attendance.face | Face recognition model loaded.
+2026-02-28T07:14:16Z | INFO     | attendance.api | action=user_created | admin=admin | phone=8840717494 | faces=1
+2026-02-28T07:22:41Z | INFO     | attendance.face | Loading face recognition model (SFace)…
+2026-02-28T07:22:41Z | INFO     | attendance.face | Face recognition model loaded.
+2026-02-28T07:22:43Z | WARNING  | attendance.face | Face validation error: OpenCV(4.13.0) D:\a\opencv-python\opencv-python\opencv\modules\core\src\alloc.cpp:73: error: (-4:Insufficient memory) Failed to allocate 40538880 bytes in function 'cv::OutOfMemoryError'
+
+2026-02-28T07:22:43Z | WARNING  | attendance.api | Face validation failed for C:\Users\Diwak\Documents\projectws\attendance-bot\bot\registered_faces\8810830160\reference_1.jpg: Could not detect a face in the image
+2026-02-28T07:23:22Z | WARNING  | attendance.face | Face validation error: OpenCV(4.13.0) D:\a\opencv-python\opencv-python\opencv\modules\core\src\alloc.cpp:73: error: (-4:Insufficient memory) Failed to allocate 7960923 bytes in function 'cv::OutOfMemoryError'
+
+2026-02-28T07:23:22Z | WARNING  | attendance.api | Face validation failed for C:\Users\Diwak\Documents\projectws\attendance-bot\bot\registered_faces\8810830160\reference_1.jpg: Could not detect a face in the image
+2026-02-28T07:24:53Z | INFO     | attendance.api | action=user_created | admin=admin | phone=8810830160 | faces=1
+2026-02-28T07:25:02Z | INFO     | attendance.api | action=face_deleted | admin=admin | user_id=1 | index=2 | remaining=1
+2026-02-28T07:25:06Z | WARNING  | attendance.face | Face validation error: Face could not be detected in C:\Users\Diwak\Documents\projectws\attendance-bot\bot\registered_faces\8840717494\reference_2.jpg.Please confirm that the picture is a face photo or consider to set enforce_detection param to False.
+2026-02-28T07:25:06Z | WARNING  | attendance.api | Face validation failed for C:\Users\Diwak\Documents\projectws\attendance-bot\bot\registered_faces\8840717494\reference_2.jpg: Could not detect a face in the image
+2026-02-28T07:25:54Z | WARNING  | attendance.face | Face validation error: Face could not be detected in C:\Users\Diwak\Documents\projectws\attendance-bot\bot\registered_faces\8840717494\reference_2.jpg.Please confirm that the picture is a face photo or consider to set enforce_detection param to False.
+2026-02-28T07:25:54Z | WARNING  | attendance.api | Face validation failed for C:\Users\Diwak\Documents\projectws\attendance-bot\bot\registered_faces\8840717494\reference_2.jpg: Could not detect a face in the image
+2026-02-28T07:28:15Z | WARNING  | attendance.face | Face validation error: Face could not be detected in C:\Users\Diwak\Documents\projectws\attendance-bot\bot\registered_faces\8840717494\reference_2.jpg.Please confirm that the picture is a face photo or consider to set enforce_detection param to False.
+2026-02-28T07:28:15Z | WARNING  | attendance.api | Face validation failed for C:\Users\Diwak\Documents\projectws\attendance-bot\bot\registered_faces\8840717494\reference_2.jpg: Could not detect a face in the image
+2026-02-28T07:28:21Z | WARNING  | attendance.face | Face validation error: Face could not be detected in C:\Users\Diwak\Documents\projectws\attendance-bot\bot\registered_faces\8840717494\reference_2.jpg.Please confirm that the picture is a face photo or consider to set enforce_detection param to False.
+2026-02-28T07:28:21Z | WARNING  | attendance.api | Face validation failed for C:\Users\Diwak\Documents\projectws\attendance-bot\bot\registered_faces\8840717494\reference_2.jpg: Could not detect a face in the image
+2026-02-28T07:28:34Z | WARNING  | attendance.face | Face validation error: Face could not be detected in C:\Users\Diwak\Documents\projectws\attendance-bot\bot\registered_faces\8840717494\reference_2.jpg.Please confirm that the picture is a face photo or consider to set enforce_detection param to False.
+2026-02-28T07:28:34Z | WARNING  | attendance.api | Face validation failed for C:\Users\Diwak\Documents\projectws\attendance-bot\bot\registered_faces\8840717494\reference_2.jpg: Could not detect a face in the image
+2026-02-28T07:31:04Z | WARNING  | attendance.face | Face validation error: Face could not be detected in C:\Users\Diwak\Documents\projectws\attendance-bot\bot\registered_faces\8840717494\reference_2.jpg.Please confirm that the picture is a face photo or consider to set enforce_detection param to False.
+2026-02-28T07:31:04Z | WARNING  | attendance.api | Face validation failed for C:\Users\Diwak\Documents\projectws\attendance-bot\bot\registered_faces\8840717494\reference_2.jpg: Could not detect a face in the image
+2026-02-28T07:31:29Z | INFO     | attendance.face | Loading face recognition model (SFace)…
+2026-02-28T07:31:29Z | INFO     | attendance.face | Face recognition model loaded.
+2026-02-28T07:31:32Z | WARNING  | attendance.face | Face validation error: Face could not be detected in C:\Users\Diwak\Documents\projectws\attendance-bot\bot\registered_faces\8840717494\reference_2.jpg.Please confirm that the picture is a face photo or consider to set enforce_detection param to False.
+2026-02-28T07:31:32Z | WARNING  | attendance.api | Face validation failed for C:\Users\Diwak\Documents\projectws\attendance-bot\bot\registered_faces\8840717494\reference_2.jpg: Could not detect a face in the image
+2026-02-28T07:32:51Z | INFO     | attendance.face | Loading face recognition model (SFace)…
+2026-02-28T07:32:51Z | INFO     | attendance.face | Face recognition model loaded.
+2026-02-28T07:32:54Z | INFO     | attendance.api | action=face_added | admin=admin | user_id=1 | index=2
+2026-02-28T07:33:44Z | INFO     | attendance.bot | action=checkin_started | telegram_id=880412020
+2026-02-28T07:33:47Z | INFO     | attendance.bot | action=phone_verified | telegram_id=880412020 | phone=8840717494
+2026-02-28T07:33:54Z | INFO     | attendance.bot | action=location_accepted | telegram_id=880412020
+2026-02-28T07:33:59Z | INFO     | attendance.face | Loading face recognition model (SFace)…
+2026-02-28T07:33:59Z | INFO     | attendance.face | Face recognition model loaded.
+2026-02-28T07:33:59Z | INFO     | attendance.face | Verifying face for user 8840717494
+2026-02-28T07:33:59Z | DEBUG    | attendance.face | Comparing with reference_1.jpg
+2026-02-28T07:34:08Z | ERROR    | attendance.face | Face verification error for 8840717494: Exception while processing img1_path
+Traceback (most recent call last):
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\deepface\modules\verification.py", line 185, in extract_embeddings_and_facial_areas
+    img_embeddings, img_facial_areas = __extract_faces_and_embeddings(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\deepface\modules\verification.py", line 264, in __extract_faces_and_embeddings
+    detection.extract_faces(
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\deepface\modules\detection.py", line 161, in extract_faces
+    raise FaceNotDetected(
+deepface.modules.exceptions.FaceNotDetected: Face could not be detected in C:\Users\Diwak\Documents\projectws\attendance-bot\bot\registered_faces\8840717494\reference_1.jpg.Please confirm that the picture is a face photo or consider to set enforce_detection param to False.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\bot\face.py", line 129, in verify_face
+    result = DeepFace.verify(
+             ^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\deepface\DeepFace.py", line 162, in verify
+    return verification.verify(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\deepface\modules\verification.py", line 199, in verify
+    img1_embeddings, img1_facial_areas = extract_embeddings_and_facial_areas(img1_path, 1)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\deepface\modules\verification.py", line 196, in extract_embeddings_and_facial_areas
+    raise ValueError(f"Exception while processing img{index}_path") from err
+ValueError: Exception while processing img1_path
+2026-02-28T07:38:01Z | INFO     | attendance.main | Database tables created / verified.
+2026-02-28T07:38:01Z | INFO     | attendance.main | Cleaned 0 old used-photo records.
+2026-02-28T07:38:01Z | INFO     | attendance.main | Bot starting…
+2026-02-28T07:38:21Z | INFO     | attendance.bot | action=checkin_started | telegram_id=880412020
+2026-02-28T07:38:36Z | INFO     | attendance.bot | action=phone_verified | telegram_id=880412020 | phone=8840717494
+2026-02-28T07:38:44Z | INFO     | attendance.bot | action=location_accepted | telegram_id=880412020
+2026-02-28T07:38:51Z | INFO     | attendance.face | Loading face recognition model (SFace)…
+2026-02-28T07:38:52Z | INFO     | attendance.face | Face recognition model loaded.
+2026-02-28T07:38:52Z | INFO     | attendance.face | Verifying face for user 8840717494
+2026-02-28T07:38:52Z | DEBUG    | attendance.face | Comparing with reference_1.jpg
+2026-02-28T07:38:55Z | DEBUG    | attendance.face | Comparing with reference_2.jpg
+2026-02-28T07:39:37Z | INFO     | attendance.bot | action=checkin_started | telegram_id=880412020
+2026-02-28T07:39:40Z | INFO     | attendance.bot | action=phone_verified | telegram_id=880412020 | phone=8840717494
+2026-02-28T07:39:50Z | INFO     | attendance.bot | action=location_accepted | telegram_id=880412020
+2026-02-28T07:40:01Z | INFO     | attendance.face | Verifying face for user 8840717494
+2026-02-28T07:40:01Z | DEBUG    | attendance.face | Comparing with reference_1.jpg
+2026-02-28T07:40:03Z | DEBUG    | attendance.face | Comparing with reference_2.jpg
+2026-02-28T07:43:51Z | INFO     | attendance.api | action=user_deleted | admin=admin | user_id=1 | phone=8840717494
+2026-02-28T07:46:44Z | INFO     | attendance.face | Loading face recognition model (SFace)…
+2026-02-28T07:46:44Z | INFO     | attendance.face | Face recognition model loaded.
+2026-02-28T07:46:45Z | WARNING  | attendance.face | Face validation error: Face could not be detected in C:\Users\Diwak\Documents\projectws\attendance-bot\bot\registered_faces\8840717494\reference_2.jpg.Please confirm that the picture is a face photo or consider to set enforce_detection param to False.
+2026-02-28T07:46:45Z | WARNING  | attendance.api | Face validation failed for C:\Users\Diwak\Documents\projectws\attendance-bot\bot\registered_faces\8840717494\reference_2.jpg: Could not detect a face in the image
+2026-02-28T07:46:49Z | WARNING  | attendance.face | Face validation error: Face could not be detected in C:\Users\Diwak\Documents\projectws\attendance-bot\bot\registered_faces\8840717494\reference_1.jpg.Please confirm that the picture is a face photo or consider to set enforce_detection param to False.
+2026-02-28T07:46:49Z | WARNING  | attendance.api | Face validation failed for C:\Users\Diwak\Documents\projectws\attendance-bot\bot\registered_faces\8840717494\reference_1.jpg: Could not detect a face in the image
+2026-02-28T07:49:22Z | INFO     | attendance.face | Loading face recognition model (SFace)…
+2026-02-28T07:49:22Z | INFO     | attendance.face | Face recognition model loaded.
+2026-02-28T07:49:25Z | INFO     | attendance.api | action=user_created | admin=admin | phone=8840717494 | faces=3
+2026-02-28T07:49:47Z | INFO     | attendance.bot | action=checkin_started | telegram_id=880412020
+2026-02-28T07:49:51Z | INFO     | attendance.bot | action=phone_verified | telegram_id=880412020 | phone=8840717494
+2026-02-28T07:49:59Z | INFO     | attendance.bot | action=location_accepted | telegram_id=880412020
+2026-02-28T07:50:17Z | INFO     | attendance.face | Verifying face for user 8840717494
+2026-02-28T07:50:17Z | DEBUG    | attendance.face | Comparing with reference_1.jpg
+2026-02-28T07:50:18Z | INFO     | attendance.face | Face match found for 8840717494
+2026-02-28T07:50:18Z | INFO     | attendance.bot | action=checkin_success | telegram_id=880412020 | user_id=3
+2026-02-28T07:57:42Z | INFO     | attendance.bot | action=checkout_success | telegram_id=880412020 | user_id=3
+2026-02-28T07:57:42Z | ERROR    | attendance.bot | Unexpected error in checkout
+Traceback (most recent call last):
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1430, in getresponse
+    response.begin()
+  File "C:\Users\Diwak\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\urllib3\util\retry.py", line 490, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1430, in getresponse
+    response.begin()
+  File "C:\Users\Diwak\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\bot\handlers.py", line 377, in checkout
+    bot.reply_to(message, "Checkout successful")
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\telebot\__init__.py", line 6394, in reply_to
+    return self.send_message(message.chat.id, text, reply_parameters=reply_parameters, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\telebot\__init__.py", line 1811, in send_message
+    apihelper.send_message(
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\telebot\apihelper.py", line 282, in send_message
+    return _make_request(token, method_url, params=payload, method='post')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\telebot\apihelper.py", line 162, in _make_request
+    result = _get_req_session().request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\requests\adapters.py", line 659, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-02-28T07:58:32Z | INFO     | attendance.main | Database tables created / verified.
+2026-02-28T07:58:32Z | INFO     | attendance.main | Cleaned 0 old used-photo records.
+2026-02-28T07:58:32Z | INFO     | attendance.main | Bot starting…
+2026-02-28T13:53:27Z | INFO     | attendance.api | action=face_deleted | admin=admin | user_id=2 | index=1 | remaining=0
+2026-02-28T13:53:31Z | INFO     | attendance.face | Loading face recognition model (SFace)…
+2026-02-28T13:53:32Z | INFO     | attendance.face | Face recognition model loaded.
+2026-02-28T13:53:35Z | INFO     | attendance.api | action=face_added | admin=admin | user_id=2 | index=1
+2026-02-28T13:53:53Z | INFO     | attendance.api | action=user_deleted | admin=admin | user_id=2 | phone=8810830160
+2026-02-28T13:55:52Z | INFO     | attendance.main | Database tables created / verified.
+2026-02-28T13:55:52Z | INFO     | attendance.main | Cleaned 0 old used-photo records.
+2026-02-28T13:55:52Z | INFO     | attendance.main | Bot starting…
+2026-02-28T13:56:22Z | INFO     | attendance.api | action=user_created | admin=admin | phone=8810830160 | faces=1

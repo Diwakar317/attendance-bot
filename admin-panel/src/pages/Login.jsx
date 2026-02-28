@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";   // 🔥 add this
 import API from "../api";
 import { TextField, Button, Box, Typography } from "@mui/material";
 
 export default function Login({ setToken }) {
+
+  const navigate = useNavigate();   // 🔥 add this
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -21,6 +24,8 @@ export default function Login({ setToken }) {
       );
 
       setToken(res.data.access_token);
+
+      navigate("/", { replace: true });   // 🔥 force dashboard
 
     })
     .catch(() => alert("Invalid login"));
