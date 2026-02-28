@@ -1,4 +1,1 @@
-
-
-OFFICE_LAT = 26.845146
-OFFICE_LON = 81.021508
+# attendance-bot
