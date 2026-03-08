@@ -13,3 +13,4 @@
 2026-02-28T13:53:10Z | INFO     | attendance.security | action=login_success | ip=127.0.0.1 | username=admin
 2026-02-28T13:56:45Z | INFO     | attendance.security | action=login_success | ip=127.0.0.1 | username=admin
 2026-02-28T14:05:49Z | INFO     | attendance.security | action=login_success | ip=127.0.0.1 | username=admin
+2026-02-28T15:20:08Z | WARNING  | attendance.security | action=photo_replay | telegram_id=880412020 | file_uid=AQADZQ5rG_eHGVV-

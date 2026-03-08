@@ -192,3 +192,47 @@ requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected(
 2026-02-28T13:56:22Z | INFO     | attendance.api | action=user_created | admin=admin | phone=8810830160 | faces=1
 2026-02-28T14:10:32Z | INFO     | attendance.api | action=user_deleted | admin=admin | user_id=3 | phone=8840717494
 2026-02-28T14:10:34Z | INFO     | attendance.api | action=user_deleted | admin=admin | user_id=4 | phone=8810830160
+2026-02-28T15:08:04Z | INFO     | attendance.main | Database tables created / verified.
+2026-02-28T15:08:04Z | INFO     | attendance.main | Cleaned 0 old used-photo records.
+2026-02-28T15:08:04Z | INFO     | attendance.main | Bot starting…
+2026-02-28T15:09:47Z | INFO     | attendance.main | Database tables created / verified.
+2026-02-28T15:09:47Z | INFO     | attendance.main | Cleaned 0 old used-photo records.
+2026-02-28T15:09:47Z | INFO     | attendance.main | Bot starting…
+2026-02-28T15:14:45Z | INFO     | attendance.main | Database tables created / verified.
+2026-02-28T15:14:45Z | INFO     | attendance.main | Cleaned 0 old used-photo records.
+2026-02-28T15:14:45Z | INFO     | attendance.main | Bot starting…
+2026-02-28T15:16:18Z | INFO     | attendance.main | Database tables created / verified.
+2026-02-28T15:16:18Z | INFO     | attendance.main | Cleaned 0 old used-photo records.
+2026-02-28T15:16:18Z | INFO     | attendance.main | Bot starting…
+2026-02-28T15:17:55Z | INFO     | attendance.face | Loading face recognition model (SFace)…
+2026-02-28T15:17:55Z | INFO     | attendance.face | Face recognition model loaded.
+2026-02-28T15:17:58Z | INFO     | attendance.api | action=user_created | admin=admin | phone=8840717494 | faces=3
+2026-02-28T15:18:39Z | INFO     | attendance.api | action=user_created | admin=admin | phone=8810830160 | faces=1
+2026-02-28T15:19:48Z | INFO     | attendance.bot | action=checkin_started | telegram_id=880412020
+2026-02-28T15:19:53Z | INFO     | attendance.bot | action=phone_verified | telegram_id=880412020 | phone=8840717494
+2026-02-28T15:20:01Z | INFO     | attendance.bot | action=location_accepted | telegram_id=880412020
+2026-02-28T15:20:20Z | INFO     | attendance.bot | action=checkin_started | telegram_id=880412020
+2026-02-28T15:20:22Z | INFO     | attendance.bot | action=phone_verified | telegram_id=880412020 | phone=8840717494
+2026-02-28T15:20:34Z | INFO     | attendance.bot | action=location_accepted | telegram_id=880412020
+2026-02-28T15:20:49Z | INFO     | attendance.face | Loading face recognition model (SFace)…
+2026-02-28T15:20:49Z | INFO     | attendance.face | Face recognition model loaded.
+2026-02-28T15:20:49Z | INFO     | attendance.face | Verifying face for user 8840717494
+2026-02-28T15:20:49Z | DEBUG    | attendance.face | Comparing with reference_1.jpg
+2026-02-28T15:20:49Z | INFO     | attendance.face | Face match found for 8840717494
+2026-02-28T15:20:49Z | INFO     | attendance.bot | action=checkin_success | telegram_id=880412020 | user_id=5
+2026-02-28T15:21:41Z | INFO     | attendance.bot | action=checkout_success | telegram_id=880412020 | user_id=5
+2026-02-28T15:21:53Z | INFO     | attendance.bot | action=checkin_started | telegram_id=880412020
+2026-02-28T15:21:56Z | INFO     | attendance.bot | action=phone_verified | telegram_id=880412020 | phone=8840717494
+2026-02-28T15:22:04Z | INFO     | attendance.bot | action=location_accepted | telegram_id=880412020
+2026-02-28T15:22:19Z | INFO     | attendance.face | Verifying face for user 8840717494
+2026-02-28T15:22:19Z | DEBUG    | attendance.face | Comparing with reference_1.jpg
+2026-02-28T15:22:19Z | INFO     | attendance.face | Face match found for 8840717494
+2026-02-28T15:36:31Z | INFO     | attendance.main | Database tables created / verified.
+2026-02-28T15:36:31Z | INFO     | attendance.main | Cleaned 0 old used-photo records.
+2026-02-28T15:36:31Z | INFO     | attendance.main | Bot starting…
+2026-02-28T15:42:58Z | INFO     | attendance.main | Database tables created / verified.
+2026-02-28T15:42:58Z | INFO     | attendance.main | Cleaned 0 old used-photo records.
+2026-02-28T15:42:58Z | INFO     | attendance.main | Bot starting…
+2026-02-28T15:45:19Z | INFO     | attendance.main | Database tables created / verified.
+2026-02-28T15:45:19Z | INFO     | attendance.main | Cleaned 0 old used-photo records.
+2026-02-28T15:45:19Z | INFO     | attendance.main | Bot starting…
