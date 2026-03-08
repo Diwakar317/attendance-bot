@@ -1,6 +1,7 @@
 import os
 import shutil
 import threading
+import cv2
 from deepface import DeepFace
 from bot.logging_config import get_app_logger, get_security_logger
 
@@ -9,7 +10,8 @@ FACES_DIR = os.path.join(BASE_DIR, "bot", "registered_faces")
 os.makedirs(FACES_DIR, exist_ok=True)
 
 MODEL_NAME = "SFace"
-DETECTOR = "opencv"
+DETECTOR = "ssd"
+MAX_IMAGE_DIMENSION = 1920  # px – longest side
 
 log = get_app_logger("face")
 sec_log = get_security_logger()
@@ -34,23 +36,43 @@ def _ensure_model() -> None:
         log.info("Face recognition model loaded.")
 
 
+def downscale_image(image_path: str) -> None:
+    """Resize image in-place if either dimension exceeds MAX_IMAGE_DIMENSION."""
+    img = cv2.imread(image_path)
+    if img is None:
+        return
+    h, w = img.shape[:2]
+    if max(h, w) <= MAX_IMAGE_DIMENSION:
+        return
+    scale = MAX_IMAGE_DIMENSION / max(h, w)
+    new_w, new_h = int(w * scale), int(h * scale)
+    log.info("Downscaling %s from %dx%d to %dx%d", os.path.basename(image_path), w, h, new_w, new_h)
+    resized = cv2.resize(img, (new_w, new_h), interpolation=cv2.INTER_AREA)
+    cv2.imwrite(image_path, resized, [cv2.IMWRITE_JPEG_QUALITY, 90])
+
+
 def validate_face_image(image_path: str) -> tuple[bool, str]:
     """
-    Validate that an image contains exactly one face.
+    Validate that an image contains exactly one clearly detectable face.
     Returns (True, "") on success or (False, reason) on failure.
     """
     _ensure_model()
+    downscale_image(image_path)
     try:
         faces = DeepFace.extract_faces(
             img_path=image_path,
             detector_backend=DETECTOR,
-            enforce_detection=False,
+            enforce_detection=True,
             align=True,
         )
         if len(faces) == 0:
             return False, "No face detected in image"
-        if len(faces) > 1:
-            return False, f"Multiple faces detected ({len(faces)}); upload one face per image"
+        # Filter out low-confidence detections
+        confident = [f for f in faces if f.get("confidence", 0) > 0.5]
+        if len(confident) == 0:
+            return False, "No face detected with sufficient confidence"
+        if len(confident) > 1:
+            return False, f"Multiple faces detected ({len(confident)}); upload one face per image"
         return True, ""
     except Exception as e:
         log.warning("Face validation error: %s", e)
@@ -81,6 +103,7 @@ def register_face(phone: str, image_path: str) -> bool:
 
         reference_path = os.path.join(user_dir, f"reference_{next_index}.jpg")
         shutil.copy(image_path, reference_path)
+        downscale_image(reference_path)
 
         log.info("Validating reference image %d for %s", next_index, phone)
 
@@ -123,8 +146,11 @@ def verify_face(phone: str, image_path: str) -> bool:
         sec_log.warning("action=face_verify_no_refs | phone=%s", phone)
         return False
 
-    try:
-        for ref in reference_images:
+    # Downscale the selfie before comparing
+    downscale_image(image_path)
+
+    for ref in reference_images:
+        try:
             log.debug("Comparing with %s", os.path.basename(ref))
             result = DeepFace.verify(
                 img1_path=ref,
@@ -139,10 +165,12 @@ def verify_face(phone: str, image_path: str) -> bool:
             if result.get("verified", False):
                 log.info("Face match found for %s", phone)
                 return True
+        except Exception as e:
+            log.warning(
+                "Skipping bad reference %s for %s: %s",
+                os.path.basename(ref), phone, e,
+            )
+            continue
 
-        sec_log.warning("action=face_verify_no_match | phone=%s", phone)
-        return False
-
-    except Exception as e:
-        log.error("Face verification error for %s: %s", phone, e, exc_info=True)
-        return False
+    sec_log.warning("action=face_verify_no_match | phone=%s", phone)
+    return False

@@ -105,10 +105,13 @@ def _validate_upload(file: UploadFile) -> None:
 
 
 def _save_and_validate_face(file: UploadFile, dest_path: str) -> None:
-    """Save uploaded file to dest_path, validate it contains exactly 1 face.
+    """Save uploaded file to dest_path, downscale, validate it contains exactly 1 face.
     Deletes the file and raises HTTPException on failure."""
     with open(dest_path, "wb") as buf:
         shutil.copyfileobj(file.file, buf)
+
+    from bot.face import downscale_image
+    downscale_image(dest_path)
 
     ok, reason = validate_face_image(dest_path)
     if not ok:

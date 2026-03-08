@@ -58,8 +58,6 @@ class RateLimiter:
             return max(0, self.max_attempts - len(self._store[key]))
 
 
-# ── Pre-configured limiters ─────────────────────────────────────
-
 # Login: 5 attempts per IP per 5 minutes
 login_limiter = RateLimiter(max_attempts=5, window_seconds=300)
 
