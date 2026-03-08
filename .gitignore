@@ -12,5 +12,6 @@ wheels/
 .vscode
 
 bot/registered_faces/
-logs/
+logs/app.log
+logs/security.log
 instance/

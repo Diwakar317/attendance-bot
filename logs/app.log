@@ -1540,3 +1540,104 @@ ValueError: Exception while processing img1_path
 2026-03-08T08:22:27Z | WARNING  | attendance.face | Skipping bad reference reference_2.jpg for 8726717494: Exception while processing img1_path
 2026-03-08T08:22:27Z | DEBUG    | attendance.face | Comparing with reference_3.jpg
 2026-03-08T08:22:29Z | WARNING  | attendance.face | Skipping bad reference reference_3.jpg for 8726717494: Exception while processing img1_path
+2026-03-08T08:30:13Z | INFO     | attendance.main | Database tables created / verified.
+2026-03-08T08:30:13Z | INFO     | attendance.main | Cleaned 0 old used-photo records.
+2026-03-08T08:30:13Z | INFO     | attendance.main | Bot starting…
+2026-03-08T08:30:34Z | INFO     | attendance.bot | action=checkin_started | telegram_id=7407399771
+2026-03-08T08:30:38Z | INFO     | attendance.bot | action=phone_verified | telegram_id=7407399771 | phone=8726717494
+2026-03-08T08:30:45Z | INFO     | attendance.bot | action=location_accepted | telegram_id=7407399771
+2026-03-08T08:31:16Z | INFO     | attendance.face | Loading face recognition model (SFace)…
+2026-03-08T08:31:16Z | INFO     | attendance.face | Face recognition model loaded.
+2026-03-08T08:31:16Z | INFO     | attendance.face | Verifying face for user 8726717494
+2026-03-08T08:31:16Z | DEBUG    | attendance.face | Comparing with reference_1.jpg
+2026-03-08T08:31:19Z | INFO     | attendance.face | Face match found for 8726717494
+2026-03-08T08:31:19Z | INFO     | attendance.bot | action=checkin_success | telegram_id=7407399771 | user_id=2
+2026-03-08T08:31:31Z | INFO     | attendance.bot | action=checkout_success | telegram_id=7407399771 | user_id=2
+2026-03-08T08:32:17Z | INFO     | attendance.bot | action=checkin_started | telegram_id=880412020
+2026-03-08T08:32:20Z | INFO     | attendance.bot | action=phone_verified | telegram_id=880412020 | phone=8840717494
+2026-03-08T08:32:25Z | INFO     | attendance.bot | action=location_accepted | telegram_id=880412020
+2026-03-08T08:32:43Z | INFO     | attendance.face | Verifying face for user 8840717494
+2026-03-08T08:32:43Z | DEBUG    | attendance.face | Comparing with reference_1.jpg
+2026-03-08T08:32:43Z | INFO     | attendance.face | Face match found for 8840717494
+2026-03-08T08:32:43Z | INFO     | attendance.bot | action=checkin_success | telegram_id=880412020 | user_id=1
+2026-03-08T08:32:56Z | INFO     | attendance.bot | action=checkout_success | telegram_id=880412020 | user_id=1
+2026-03-08T08:37:47Z | ERROR    | attendance.main | Polling error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+Traceback (most recent call last):
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1430, in getresponse
+    response.begin()
+  File "C:\Users\Diwak\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\urllib3\util\retry.py", line 490, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1430, in getresponse
+    response.begin()
+  File "C:\Users\Diwak\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\bot\main.py", line 41, in <module>
+    handlers.bot.infinity_polling(
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\telebot\__init__.py", line 1103, in infinity_polling
+    self.__skip_updates()
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\telebot\__init__.py", line 673, in __skip_updates
+    self.get_updates(offset=-1)
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\telebot\__init__.py", line 660, in get_updates
+    json_updates = apihelper.get_updates(
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\telebot\apihelper.py", line 339, in get_updates
+    return _make_request(token, method_url, params=payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\telebot\apihelper.py", line 162, in _make_request
+    result = _get_req_session().request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Diwak\Documents\projectws\attendance-bot\.venv\Lib\site-packages\requests\adapters.py", line 659, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-08T08:37:47Z | INFO     | attendance.main | Reconnecting in 5 seconds…
